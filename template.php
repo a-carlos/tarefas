@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -11,62 +10,11 @@
     <body>
         <h1>Gerenciador de Tarefas</h1>
 
-        <form>
-            <fieldset>
-                <legend>Nova tarefa</legend>
-                <label>
-                    Tarefa:
-                    <input type="text" name="nome">
-                </label>
+        <?php require 'formulario.php'; ?>
 
-                <label>
-                    Descrição (Opcional):
-                    <textarea name="descricao"></textarea>
-                </label>
-
-                <label>
-                    Prazo (opcional):
-                    <input type="text" name="prazo">
-                </label>
-
-                <fieldset>
-                    <legend>Prioridade:</legend>
-                    <label>
-                        <input type="radio" name="prioridade" value="1" checked>Baixa
-                        <input type="radio" name="prioridade" value="2">Média
-                        <input type="radio" name="prioridade" value="3">Alta
-                    </label>
-                </fieldset>
-
-                <label>
-                    Tarefa Concluída:
-                    <input type="checkbox" name="concluida" value="1">
-                </label>
-
-                <input type="submit" value="Cadastrar">
-            </fieldset>
-        </form>
-
-
-        <table>
-            <tr>
-                <th>Tarefa</th>
-                <th>Descricao</th>
-                <th>Prazo</th>
-                <th>Prioridade</th>
-                <th>Concluída</th>
-            </tr>
-
-            <?php foreach($lista_tarefas as $tarefa) : ?>
-                <tr>
-                   <td><?php echo $tarefa['nome']; ?></td>
-                   <td><?php echo $tarefa['descricao']; ?></td>
-                   <td align="center"><?php echo traduz_data_para_exibir($tarefa['prazo']); ?></td>
-                   <td align="center"><?php echo traduz_prioridade($tarefa['prioridade']); ?></td>
-                   <td align="center"><?php echo traduz_concluida($tarefa['concluida']); ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <?php if ( $exibir_tabela ) : ?>
+            <?php require 'tabela.php'; ?>
+        <?php endif; ?>
 
     </body>
 </html>

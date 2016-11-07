@@ -4,6 +4,8 @@ session_start();
 require "banco.php";
 require "ajudantes.php";
 
+$exibir_tabela = true;
+
 if (array_key_exists('nome', $_GET) && $_GET['nome'] != '')
 {
     $tarefa = [];
