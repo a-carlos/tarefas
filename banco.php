@@ -65,3 +65,18 @@ function buscar_tarefa( $conexao, $id )
 
     return mysqli_fetch_assoc( $resultado );
 }
+
+function editar_tarefa( $conexao, $tarefa )
+{
+    $sqlEditar = "
+        UPDATE tarefas SET
+            nome        = '{$tarefa['nome']}',
+            descricao   = '{$tarefa['descricao']}',
+            prioridade  =  {$tarefa['prioridade']},
+            prazo       = '{$tarefa['prazo']}',
+            concluida   =  {$tarefa['concluida']}
+        WHERE id = {$tarefa['id']}
+    ";
+
+    mysqli_query( $conexao, $sqlEditar );
+}

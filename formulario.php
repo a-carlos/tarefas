@@ -10,15 +10,13 @@
 
         <label>
             Descrição (Opcional):
-            <textarea name="descricao">
-                <?php echo $tarefa['descricao']; ?>
-            </textarea>
+            <textarea name="descricao"><?php echo $tarefa['descricao']; ?></textarea>
         </label>
 
         <label>
             Prazo (opcional):
             <input type="text" name="prazo"
-                value="<?php traduz_data_para_exibir($tarefa['prazo']); ?>" />
+                value="<?php echo traduz_data_para_exibir($tarefa['prazo']); ?>" />
         </label>
 
         <fieldset>
@@ -46,6 +44,6 @@
             />
         </label>
 
-        <input type="submit" value="Cadastrar">
+        <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar' ?>"/>
     </fieldset>
 </form>

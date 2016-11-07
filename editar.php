@@ -9,7 +9,7 @@ if ( array_key_exists('nome', $_GET) && $_GET['nome'] != '')
 {
     $tarefa = [];
 
-    $tarefa['id']   = $_GET['id'];
+    $tarefa['id'] = $_GET['id'];
 
     $tarefa['nome'] = $_GET['nome'];
 
@@ -22,7 +22,7 @@ if ( array_key_exists('nome', $_GET) && $_GET['nome'] != '')
 
     if (array_key_exists('prazo', $_GET))
     {
-        traduz_data_para_bancoconcluida($tarefa['prazo'] = $_GET['prazo']);
+        $tarefa['prazo'] = traduz_data_para_banco($_GET['prazo']);
     } else {
         $tarefa['prazo'] = '';
     }
@@ -37,6 +37,9 @@ if ( array_key_exists('nome', $_GET) && $_GET['nome'] != '')
     }
 
     editar_tarefa($conexao, $tarefa);
+
+     header('Location: tarefas.php');
+    die();
 }
 
 $tarefa = buscar_tarefa($conexao, $_GET['id']);

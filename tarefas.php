@@ -32,24 +32,18 @@ if (array_key_exists('nome', $_GET) && $_GET['nome'] != '')
         $tarefa['concluida'] = 0;
     }
 
-    //$_SESSION['lista_tarefas'][] = $tarefa;
-
     gravar_tarefa( $conexao, $tarefa );
 }
 
-/*
- * Este trecho será substituido para buscar os dados do banco e não mais da SESSÃO
- *
- *
- *
-$lista_tarefas = [];
-
-if( array_key_exists('lista_tarefas', $_SESSION))
-{
-    $lista_tarefas = $_SESSION['lista_tarefas'];
-}
-
-*/
 $lista_tarefas = buscar_tarefas( $conexao );
+
+$tarefa = [
+    'id'        => 0,
+    'nome'      => '',
+    'descricao' => '',
+    'prazo'     => '',
+    'prioridade'=> 1,
+    'concluida' => ''
+];
 
 require "template.php";
