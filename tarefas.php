@@ -33,6 +33,10 @@ if (array_key_exists('nome', $_GET) && $_GET['nome'] != '')
     }
 
     gravar_tarefa( $conexao, $tarefa );
+
+    // evita que a tarefa seja cadastrada novamente ao atualizar a página
+    header('Location: tarefas.php');
+    die();
 }
 
 $lista_tarefas = buscar_tarefas( $conexao );

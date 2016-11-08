@@ -18,6 +18,7 @@
             <td align="center"><?php echo traduz_concluida($tarefa['concluida']); ?></td>
             <td align="center">
                 <a href="editar.php?id=<?php echo $tarefa['id']; ?>">Editar</a>
+                <a href="remover.php?id=<?php echo $tarefa['id']; ?>">Remover</a>
             </td>
         </tr>
     <?php endforeach; ?>
