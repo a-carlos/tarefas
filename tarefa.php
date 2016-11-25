@@ -22,7 +22,6 @@ if (tem_post())
                 'nome' => substr($nome, 0, -4),
                 'arquivo' => $nome
 
-
             ];
 
         } else {

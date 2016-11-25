@@ -61,9 +61,12 @@ function buscar_tarefa( $conexao, $id )
 {
     $sqlBusca = 'SELECT * FROM tarefas WHERE id = '. $id;
 
-    $resultado = mysqli_query( $conexao, $sqlBusca );
+    var_dump($sqlBusca);
+    echo " --resultado do sql </br></br>";
 
-    return mysqli_fetch_assoc( $resultado );
+    $resultado = mysqli_query($conexao, $sqlBusca);
+
+    return mysqli_fetch_assoc($resultado);
 }
 
 function editar_tarefa( $conexao, $tarefa )
@@ -108,8 +111,12 @@ function buscar_anexos( $conexao, $tarefa_id )
 {
     $sql = "SELECT * FROM anexos WHERE tarefa_id = {$tarefa_id}";
 
+    var_dump($sql);
+    echo " --resultado do sql </br></br>";
+
     $resultado = mysqli_query($conexao, $sql);
 
+    // $anexos = array();
     $anexos = [];
 
     while ($anexo = mysqli_fetch_assoc($resultado)){

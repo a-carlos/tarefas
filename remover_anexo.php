@@ -8,4 +8,4 @@ remover_anexo($conexao, $anexo['id']);
 
 unlink('anexos/' . $anexo['arquivo']);
 
-header('Location: tarefa.php?id=' . $anexo['tarefas_id']);
+header('Location: tarefa.php?id=' . $anexo['tarefa_id']);
