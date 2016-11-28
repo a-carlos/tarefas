@@ -1,5 +1,5 @@
 <form method="POST">
-    <input type="hidden" name="id" value="<?php echo $tarefa['id']; ?>" />
+    <input type="hidden" name="id" value="<?php echo $tarefa->getId(); ?>" />
 
     <fieldset>
         <legend>Nova tarefa</legend>
@@ -11,12 +11,12 @@
                 </span>
             <?php endif; ?>
             <input type="text" name="nome"
-                value="<?php echo $tarefa['nome']; ?>" />
+                value="<?php echo $tarefa->getNome(); ?>" />
         </label>
 
         <label>
             Descrição (Opcional):
-            <textarea name="descricao"><?php echo $tarefa['descricao']; ?></textarea>
+            <textarea name="descricao"><?php echo $tarefa->getDescricao(); ?></textarea>
         </label>
 
         <label>
@@ -27,22 +27,22 @@
                 </span>
             <?php endif; ?>
             <input type="text" name="prazo"
-                value="<?php echo traduz_data_para_exibir($tarefa['prazo']); ?>" />
+                value="<?php echo traduz_data_para_exibir($tarefa->getPrazo()); ?>" />
         </label>
 
         <fieldset>
             <legend>Prioridade:</legend>
             <label>
                 <input type="radio" name="prioridade" value="1"
-                    <?php echo ($tarefa['prioridade'] == 1) ? 'checked' : ''; ?>
+                    <?php echo ($tarefa->getPrioridade() == 1) ? 'checked' : ''; ?>
                 /> Baixa
 
                 <input type="radio" name="prioridade" value="2"
-                    <?php echo ($tarefa['prioridade'] == 2) ? 'checked' : ''; ?>
+                    <?php echo ($tarefa->getPrioridade() == 2) ? 'checked' : ''; ?>
                 /> Media
 
                 <input type="radio" name="prioridade" value="3"
-                    <?php echo ($tarefa['prioridade'] == 3) ? 'checked' : ''; ?>
+                    <?php echo ($tarefa->getPrioridade() == 3) ? 'checked' : ''; ?>
                 /> Alta
 
             </label>
@@ -51,10 +51,15 @@
         <label>
             Tarefa Concluída:
             <input type="checkbox" name="concluida" value="1"
-                <?php echo ($tarefa['concluida']) ? 'checked' : ''; ?>
+                <?php echo ($tarefa->getConcluida()) ? 'checked' : ''; ?>
             />
         </label>
 
-        <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar' ?>"/>
+        <label>
+            Lembrete por e-mail:
+            <input type="checkbox" name="lembrete" value="1" />
+        </label>
+
+        <input type="submit" value="<?php echo ($tarefa->getId() > 0) ? 'Atualizar' : 'Cadastrar' ?>"/>
     </fieldset>
 </form>

@@ -3,35 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>Gerenciador de Tarefas</title>
-    <link rel="stylesheet" type="text/css" href="tarefas.css">
+    <link rel="stylesheet" href="tarefas.css" type="text/css"/>
 </head>
 <body>
     <div="bloco_principal">
-        <h1>Tarefa: <?php echo $tarefa['nome']; ?> </h1>
+        <h1>Tarefa: <?php echo $tarefa->getNome(); ?> </h1>
 
-        <p><a href="tarefas.php"> Voltar para lista de tarefas</a></p>
+        <p><a href="tarefas.php"> Voltar para lista de tarefas</a>.</p>
 
-        <p><strong>Concluída:</strong><?php echo traduz_concluida($tarefa['concluida']); ?></p>
-        <p><strong>Descrição:</strong><?php echo nl2br($tarefa['descricao']); ?></p>
-        <p><strong>Prazo:</strong><?php echo traduz_data_para_exibir($tarefa['prazo']); ?></p>
-        <p><strong>Prioridade:</strong><?php echo traduz_prioridade($tarefa['prioridade']); ?></p>
+        <p><strong>Concluída:</strong><?php echo traduz_concluida($tarefa->getConcluida()); ?></p>
+        <p><strong>Descrição:</strong><?php echo nl2br($tarefa->getDescricao()); ?></p>
+        <p><strong>Prazo:</strong><?php echo traduz_data_para_exibir($tarefa->getPrazo()); ?></p>
+        <p><strong>Prioridade:</strong><?php echo traduz_prioridade($tarefa->getPrioridade()); ?></p>
 
         <h2>Anexos</h2>
         <!-- Lista de anexos -->
-        <?php if(count($anexos) > 0) : ?>
+        <?php if(count($tarefa->getAnexos()) > 0) : ?>
             <table>
                 <tr>
                     <th>Arquivo</th>
                     <th>Opções</th>
                 </tr>
 
-                <?php foreach($anexos as $anexo) : ?>
+                <?php foreach($tarefa->getAnexos() as $anexo) : ?>
                     <tr>
-                        <td><?php echo $anexo['nome']; ?></td>
+                        <td><?php echo $anexo->getNome(); ?></td>
 
                         <td>
-                            <a href="anexos/<?php $anexo['arquivo']; ?>">Download</a>
-                            <a href="remover_anexo.php?id=<?php echo $anexo['id']; ?>">Remover</a>
+                            <a href="anexos/<?php $anexo->getArquivo(); ?>">Download</a>
+                            <a href="remover_anexo.php?id=<?php echo $anexo->getId(); ?>">Remover</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -50,7 +50,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>Novo Anexo</legend>
-                <input type="hidden" name="tarefa_id" value="<?php echo $tarefa['id']; ?>" />
+                <input type="hidden" name="tarefa_id" value="<?php echo $tarefa->getId(); ?>" />
 
                 <label>
                     <?php if($tem_erros && isset($erros_validacao['anexo'])): ?>
