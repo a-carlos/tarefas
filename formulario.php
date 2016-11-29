@@ -11,12 +11,12 @@
                 </span>
             <?php endif; ?>
             <input type="text" name="nome"
-                value="<?php echo $tarefa->getNome(); ?>" />
+                value="<?php echo htmlentities($tarefa->getNome()); ?>" />
         </label>
 
         <label>
             Descrição (Opcional):
-            <textarea name="descricao"><?php echo $tarefa->getDescricao(); ?></textarea>
+            <textarea name="descricao"><?php echo htmlentities($tarefa->getDescricao()); ?></textarea>
         </label>
 
         <label>
